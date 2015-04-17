@@ -755,7 +755,7 @@ class SQLCompiler(object):
         versions of "query has any results."
         """
         # This is always executed on a query clone, so we can modify self.query
-        self.query.add_extra({'a': 1}, None, None, None, None, None)
+        self.query.add_extra({'a': 1}, None, None, None, None, None, None)
         self.query.set_extra_mask(['a'])
         return bool(self.execute_sql(SINGLE))
 

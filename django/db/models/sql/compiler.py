@@ -127,7 +127,10 @@ class SQLCompiler(object):
         params.extend(f_params)
 
         if self.query.extra_join:
-            result.append(' '.join(self.query.extra_join))
+            joins = (j[0] for j in self.query.extra_join)
+            for join in self.query.extra_join:
+                params.extend(join[1])
+            result.append(' '.join(joins))
 
         if where:
             result.append('WHERE %s' % where)
